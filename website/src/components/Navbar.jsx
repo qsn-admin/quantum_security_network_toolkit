@@ -4,10 +4,11 @@ import { Menu, X, Hexagon } from 'lucide-react'
 import './Navbar.css'
 
 const navLinks = [
-  { path: '/', label: 'Home' },
-  { path: '/features', label: 'Features' },
-  { path: '/pricing', label: 'Pricing' },
-  { path: '/demo', label: 'Demo' },
+  { path: '/', label: 'Warning' },
+  { path: '/access-rules', label: 'Access Protocol' },
+  { path: '/by-laws', label: 'By-Laws' },
+  { path: '/architect-tiers', label: 'Architect Tiers' },
+  { path: '/demo', label: 'Level 50 Gate' },
   { path: '/contact', label: 'Contact' }
 ]
 
@@ -49,11 +50,11 @@ function Navbar() {
             ))}
           </div>
           <div className="navbar-actions">
-            <Link to="/demo" className="btn btn-secondary">
-              Try Demo
+            <Link to="/access-rules" className="btn btn-secondary">
+              View Protocol
             </Link>
-            <Link to="/pricing" className="btn btn-primary">
-              Get Started
+            <Link to="/demo" className="btn btn-primary">
+              Level 50 Gate
             </Link>
           </div>
         </div>
