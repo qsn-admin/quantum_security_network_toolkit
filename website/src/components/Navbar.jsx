@@ -4,7 +4,7 @@ import { Menu, X, Hexagon } from 'lucide-react'
 import './Navbar.css'
 
 const navLinks = [
-  { path: '/', label: 'Home' },
+  { path: '/', label: 'Security' },
   { path: '/features', label: 'Features' },
   { path: '/pricing', label: 'Pricing' },
   { path: '/demo', label: 'Demo' },
