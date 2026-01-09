@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>QSN - Quantum Security Network</title>
+  <script>
+    // GitHub Pages 404 redirect for single-page apps with HashRouter
+    // This script takes the current pathname and redirects to the index with a hash
+    const path = window.location.pathname.slice(1);
+    if (path && path !== 'index.html') {
+      const redirectPath = path.startsWith('/') ? path : '/' + path;
+      window.location.replace(window.location.origin + '/#' + redirectPath);
+    } else {
+      window.location.replace(window.location.origin);
+    }
+  </script>
+</head>
+<body>
+  <div style="font-family: Arial, sans-serif; text-align: center; padding: 50px;">
+    <h1>Redirecting...</h1>
+    <p>If you are not redirected automatically, <a href="/">click here</a>.</p>
+  </div>
+</body>
+</html>

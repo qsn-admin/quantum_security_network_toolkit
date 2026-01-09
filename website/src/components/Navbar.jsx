@@ -9,7 +9,8 @@ const navLinks = [
   { path: '/by-laws', label: 'By-Laws' },
   { path: '/architect-tiers', label: 'Architect Tiers' },
   { path: '/demo', label: 'Level 50 Gate' },
-  { path: '/contact', label: 'Contact' }
+  { path: '/contact', label: 'Contact' },
+  { path: 'http://localhost:5173', label: 'Dashboard', external: true }
 ]
 
 function Navbar() {
@@ -39,23 +40,36 @@ function Navbar() {
         <div className={`navbar-menu ${isOpen ? 'open' : ''}`}>
           <div className="navbar-links">
             {navLinks.map(link => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`nav-link ${location.pathname === link.path ? 'active' : ''}`}
-                onClick={() => setIsOpen(false)}
-              >
-                {link.label}
-              </Link>
+              link.external ? (
+                <a
+                  key={link.path}
+                  href={link.path}
+                  className="nav-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className={`nav-link ${location.pathname === link.path ? 'active' : ''}`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              )
             ))}
           </div>
           <div className="navbar-actions">
             <Link to="/access-rules" className="btn btn-secondary">
               View Protocol
             </Link>
-            <Link to="/demo" className="btn btn-primary">
-              Level 50 Gate
-            </Link>
+            <a href="http://localhost:5173" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+              Enter Dashboard
+            </a>
           </div>
         </div>
 
