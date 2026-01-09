@@ -13,7 +13,7 @@ function Footer() {
               <Hexagon className="logo-icon" />
               <div className="logo-text">
                 <span className="logo-title">QSN</span>
-                <span className="logo-subtitle">Quantum Security Network Toolkit</span>
+                <span className="logo-subtitle">Quantum Security Network</span>
               </div>
             </Link>
             <p className="footer-desc">
@@ -59,7 +59,7 @@ function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <p>&copy; {new Date().getFullYear()} QSN Quantum Security Network Toolkit. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} QSN Quantum Security Network Protocol. All rights reserved.</p>
           <p className="footer-tagline">Quantum AI Security Net - Powered by Metatron's Cube Encryption</p>
         </div>
       </div>

@@ -7,7 +7,6 @@ import Features from './pages/Features'
 import Pricing from './pages/Pricing'
 import Demo from './pages/Demo'
 import Contact from './pages/Contact'
-import QuantumSecurity from './pages/QuantumSecurity'
 import './styles/App.css'
 
 function App() {
@@ -17,13 +16,11 @@ function App() {
         <Navbar />
         <main>
           <Routes>
-            <Route path="/" element={<QuantumSecurity />} />
+            <Route path="/" element={<Home />} />
             <Route path="/features" element={<Features />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/demo" element={<Demo />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/quantum-security" element={<QuantumSecurity />} />
-            <Route path="/security" element={<QuantumSecurity />} />
           </Routes>
         </main>
         <Footer />

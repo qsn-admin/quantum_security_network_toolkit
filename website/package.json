@@ -1,7 +1,7 @@
 {
-  "name": "quantum-security-network-toolkit",
+  "name": "qsn-quantum-security-network",
   "version": "1.0.0",
-  "description": "QSN - Quantum Security Network Toolkit - Official Website",
+  "description": "QSN - Quantum Security Network Protocol (Quantum AI Security Net) - Official Website",
   "type": "module",
   "scripts": {
     "dev": "vite",

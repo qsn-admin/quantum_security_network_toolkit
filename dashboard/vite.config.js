@@ -3,7 +3,6 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/quantum_security_network_toolkit/app/',
   server: {
     port: 5173,
     host: '0.0.0.0',

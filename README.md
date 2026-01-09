@@ -4,12 +4,6 @@
 
 > Next-generation cybersecurity powered by quantum encryption, AI threat detection, and Metatron's Cube geometric encoding.
 
-## 🌐 Live Deployment
-
-**Official Website:** https://qsn-admin.github.io/quantum_security_network_toolkit/#/
-
-**Security Dashboard:** https://qsn-admin.github.io/quantum_security_network_toolkit/#/app/
-
 ---
 
 ## Quick Start
@@ -51,8 +45,6 @@ start-website.bat
 
 - **Security Dashboard:** http://localhost:5173
 - **QSN Website:** http://localhost:3000
-- **Live Site:** https://qsn-admin.github.io/quantum_security_network_toolkit/#/
-- **Security Section:** https://qsn-admin.github.io/quantum_security_network_toolkit/#/security
 
 ---
 

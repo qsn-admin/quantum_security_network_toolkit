@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Sidebar from './components/layout/Sidebar'
 import Header from './components/layout/Header'
 import Dashboard from './pages/Dashboard'
@@ -32,7 +32,7 @@ function App() {
   }, [])
 
   return (
-    <HashRouter>
+    <BrowserRouter>
       <div className="qsn-app">
         <Sidebar
           isOpen={sidebarOpen}
@@ -79,7 +79,7 @@ function App() {
           </main>
         </div>
       </div>
-    </HashRouter>
+    </BrowserRouter>
   )
 }
 

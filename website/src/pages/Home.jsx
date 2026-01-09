@@ -343,34 +343,6 @@ function Home() {
         </div>
       </section>
 
-      {/* Quantum Security Coming Soon */}
-      <section id="security" className="section security-coming-soon">
-        <div className="container">
-          <div className="coming-soon-content">
-            <div className="coming-soon-badge">Coming Soon</div>
-            <h2><span className="text-gradient">Quantum Security</span> Standalone</h2>
-            <p>
-              A dedicated quantum security protocol suite launching soon.
-              Post-quantum cryptography, zero-knowledge proofs, and real-time protection.
-            </p>
-            <div className="coming-soon-features">
-              <div className="cs-feature">
-                <Lock size={24} />
-                <span>Post-Quantum Encryption</span>
-              </div>
-              <div className="cs-feature">
-                <Shield size={24} />
-                <span>Zero-Knowledge Proofs</span>
-              </div>
-              <div className="cs-feature">
-                <Zap size={24} />
-                <span>Real-Time Protection</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="section cta-section">
         <div className="container">
@@ -384,6 +356,9 @@ function Home() {
               <Link to="/demo" className="btn btn-primary">
                 Start Free Demo
                 <ArrowRight size={18} />
+              </Link>
+              <Link to="/contact" className="btn btn-secondary">
+                Talk to an Expert
               </Link>
             </div>
           </div>
