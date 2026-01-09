@@ -5,10 +5,8 @@ import './Navbar.css'
 
 const navLinks = [
   { path: '/', label: 'Home' },
-  { path: '/features', label: 'Features' },
-  { path: '/pricing', label: 'Pricing' },
   { path: '/demo', label: 'Demo' },
-  { path: '/contact', label: 'Contact' }
+  { path: '#security', label: 'Quantum Security', highlight: true }
 ]
 
 function Navbar() {
@@ -38,22 +36,30 @@ function Navbar() {
         <div className={`navbar-menu ${isOpen ? 'open' : ''}`}>
           <div className="navbar-links">
             {navLinks.map(link => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`nav-link ${location.pathname === link.path ? 'active' : ''}`}
-                onClick={() => setIsOpen(false)}
-              >
-                {link.label}
-              </Link>
+              link.path.startsWith('#') ? (
+                <a
+                  key={link.path}
+                  href={link.path}
+                  className={`nav-link ${link.highlight ? 'nav-link-highlight' : ''}`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className={`nav-link ${location.pathname === link.path ? 'active' : ''} ${link.highlight ? 'nav-link-highlight' : ''}`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              )
             ))}
           </div>
           <div className="navbar-actions">
-            <Link to="/demo" className="btn btn-secondary">
+            <Link to="/demo" className="btn btn-primary">
               Try Demo
-            </Link>
-            <Link to="/pricing" className="btn btn-primary">
-              Get Started
             </Link>
           </div>
         </div>

@@ -451,3 +451,64 @@
     align-items: center;
   }
 }
+
+/* Coming Soon Section */
+.security-coming-soon {
+  background: var(--qsn-primary);
+}
+
+.coming-soon-content {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.coming-soon-badge {
+  display: inline-block;
+  padding: 8px 24px;
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(138, 43, 226, 0.2));
+  border: 1px solid rgba(0, 255, 255, 0.4);
+  border-radius: 50px;
+  color: var(--accent-cyan);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+  animation: pulse-badge 2s ease-in-out infinite;
+}
+
+@keyframes pulse-badge {
+  0%, 100% { box-shadow: 0 0 10px rgba(0, 255, 255, 0.3); }
+  50% { box-shadow: 0 0 25px rgba(0, 255, 255, 0.6); }
+}
+
+.coming-soon-content h2 {
+  margin-bottom: 16px;
+}
+
+.coming-soon-content > p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+}
+
+.coming-soon-features {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.cs-feature {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  color: var(--text-secondary);
+}
+
+.cs-feature svg {
+  color: var(--accent-cyan);
+}
