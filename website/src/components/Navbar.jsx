@@ -60,7 +60,7 @@ function Navbar() {
             ))}
           </div>
           <div className="navbar-actions">
-            <a href="https://oroboroslab.github.io/quantum-security-network/" className="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+            <a href="/quantum_security_network_toolkit/app/" className="btn btn-secondary">
               Launch App
             </a>
             <Link to="/demo" className="btn btn-primary">
