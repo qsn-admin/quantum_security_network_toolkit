@@ -23,6 +23,7 @@ function App() {
             <Route path="/demo" element={<Demo />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/quantum-security" element={<QuantumSecurity />} />
+            <Route path="/security" element={<QuantumSecurity />} />
           </Routes>
         </main>
         <Footer />

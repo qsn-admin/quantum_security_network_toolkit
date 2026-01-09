@@ -1,0 +1,63 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        cache-dependency-path: |
+          website/package-lock.json
+          dashboard/package-lock.json
+          
+    - name: Install Website Dependencies
+      run: |
+        cd website
+        npm ci
+        
+    - name: Build Website
+      run: |
+        cd website
+        npm run build
+        
+    - name: Install Dashboard Dependencies
+      run: |
+        cd dashboard
+        npm ci
+        
+    - name: Build Dashboard
+      run: |
+        cd dashboard
+        npm run build
+        
+    - name: Prepare Deployment Structure
+      run: |
+        mkdir -p dist
+        cp -r website/dist/* dist/
+        mkdir -p dist/app
+        cp -r dashboard/dist/* dist/app/
+        
+    - name: Setup Pages
+      uses: actions/configure-pages@v4
+      
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: ./dist
+        
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
