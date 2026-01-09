@@ -8,7 +8,8 @@ const navLinks = [
   { path: '/features', label: 'Features' },
   { path: '/pricing', label: 'Pricing' },
   { path: '/demo', label: 'Demo' },
-  { path: '/contact', label: 'Contact' }
+  { path: '/contact', label: 'Contact' },
+  { path: '/quantum-security', label: 'Quantum Security' }
 ]
 
 function Navbar() {
