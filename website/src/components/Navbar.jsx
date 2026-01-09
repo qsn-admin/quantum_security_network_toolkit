@@ -5,8 +5,10 @@ import './Navbar.css'
 
 const navLinks = [
   { path: '/', label: 'Home' },
+  { path: '/features', label: 'Features' },
+  { path: '/pricing', label: 'Pricing' },
   { path: '/demo', label: 'Demo' },
-  { path: '#security', label: 'Quantum Security', highlight: true }
+  { path: '/contact', label: 'Contact' }
 ]
 
 function Navbar() {
@@ -58,6 +60,9 @@ function Navbar() {
             ))}
           </div>
           <div className="navbar-actions">
+            <a href="https://oroboroslab.github.io/quantum-security-network/" className="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+              Launch App
+            </a>
             <Link to="/demo" className="btn btn-primary">
               Try Demo
             </Link>
