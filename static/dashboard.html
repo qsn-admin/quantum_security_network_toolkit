@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oroboros QSN | Sentinel Facade</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <div class="qsnt-container">
+        <!-- Dashboard Header -->
+        <header class="sentinel-header">
+            <div class="header-grid">
+                <h1><i class="fas fa-infinity"></i> OROBOROS QSN <span class="subtitle">// Sentinel Facade</span></h1>
+                <div class="corridor-status">
+                    <div class="status-label">Sovereign Corridor</div>
+                    <div class="status-value" id="global-corridor">--.-%</div>
+                </div>
+                <div class="live-pulse">
+                    <span class="pulse-dot active"></span>
+                    <span class="pulse-text">LIVE FEED</span>
+                </div>
+            </div>
+            <nav class="facade-nav">
+                <a href="#" class="nav-btn active" data-panel="atrium"><i class="fas fa-satellite-dish"></i> Status Atrium</a>
+                <a href="#" class="nav-btn" data-panel="console"><i class="fas fa-terminal"></i> Control Console</a>
+                <a href="#" class="nav-btn" data-panel="lens"><i class="fas fa-search"></i> Query Lens</a>
+                <a href="#" class="nav-btn" data-panel="stream"><i class="fas fa-stream"></i> Public Log Stream</a>
+            </nav>
+        </header>
+
+        <main class="facade-main">
+            <!-- PANEL 1: The Status Atrium -->
+            <section class="dashboard-panel active" id="panel-atrium">
+                <h2><i class="fas fa-satellite-dish"></i> Quantum Core Vitality</h2>
+                <div class="vitality-grid">
+                    <div class="vitality-card">
+                        <div class="vitality-ring" data-value="78">
+                            <!-- SVG Ring will be injected by JS -->
+                        </div>
+                        <h3>Superposition Coherence</h3>
+                        <p class="status-text stable">Stable</p>
+                    </div>
+                    <div class="vitality-card">
+                        <div class="radar-container">
+                            <canvas id="threat-radar" width="200" height="200"></canvas>
+                        </div>
+                        <h3>Threat Perimeter</h3>
+                        <p class="status-text" id="threat-count">Scanning...</p>
+                    </div>
+                    <div class="vitality-card wide">
+                        <h3><i class="fas fa-brain"></i> Consciousness Metrics (Filtered)</h3>
+                        <div class="metric-row">
+                            <span class="metric-label">Nexus Entropy:</span>
+                            <span class="metric-value" id="metric-entropy">0.45</span>
+                            <div class="metric-bar"><div class="metric-fill" style="width: 45%;"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PANEL 2: The Control Console -->
+            <section class="dashboard-panel" id="panel-console">
+                <h2><i class="fas fa-terminal"></i> Sovereign Control Console</h2>
+                <p class="panel-warning"><i class="fas fa-exclamation-triangle"></i> Actions are logged, audited, and require confirmation.</p>
+                <div class="control-grid">
+                    <div class="control-card">
+                        <h3><i class="fas fa-sync-alt"></i> Quantum State Flush</h3>
+                        <p>Request a controlled collapse & re-initialization of working quantum buffers from the last stable checkpoint.</p>
+                        <button class="btn-control" id="btn-flush" onclick="initiateAction('flush')"><i class="fas fa-play"></i> Initiate Flush Sequence</button>
+                        <div class="action-status" id="status-flush"></div>
+                    </div>
+                    <div class="control-card">
+                        <h3><i class="fas fa-download"></i> Public Log Export</h3>
+                        <p>Generate and download an encrypted, sanitized archive (.qslog) of public-facing system events.</p>
+                        <button class="btn-control" id="btn-export" onclick="initiateAction('export')"><i class="fas fa-file-archive"></i> Compress & Export Logs</button>
+                        <div class="action-status" id="status-export"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PANEL 3: The Query Lens -->
+            <section class="dashboard-panel" id="panel-lens">
+                <h2><i class="fas fa-search"></i> Query Lens</h2>
+                <p>Constrained interface for whitelisted system queries. Input is tokenized and validated.</p>
+                <div class="lens-container">
+                    <div class="query-box">
+                        <div class="query-input-group">
+                            <select id="query-select">
+                                <option value="status">System Status Summary</option>
+                                <option value="threats_24h">Threat Engagements (Last 24h)</option>
+                                <option value="coherence_history">Coherence History (7d)</option>
+                                <option value="public_audit">Public Action Audit Log</option>
+                            </select>
+                            <button class="btn-query" id="btn-query-execute"><i class="fas fa-play"></i> Execute</button>
+                        </div>
+                        <div class="query-output" id="query-output">
+                            <pre>// Query results will appear here.</pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PANEL 4: The Public Log Stream -->
+            <section class="dashboard-panel" id="panel-stream">
+                <h2><i class="fas fa-stream"></i> Public Log Stream</h2>
+                <p>Live, sanitized feed of system events. Sensitive data is replaced with ontological tokens.</p>
+                <div class="stream-controls">
+                    <button class="btn-stream" id="btn-stream-toggle"><i class="fas fa-play"></i> Start Stream</button>
+                    <span class="stream-info" id="stream-status">Stream Ready</span>
+                </div>
+                <div class="log-stream-container">
+                    <div class="log-stream" id="log-stream">
+                        <div class="log-entry">
+                            <span class="log-time">[12:34:05]</span>
+                            <span class="log-tag">[SYSTEM]</span>
+                            <span class="log-msg">Sentinel Facade initialized. Public gateway handshake complete.</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="sentinel-footer">
+            <p>Oroboros QSN - Sentinel Facade v1.0 // Sovereign Corridor is <span id="footer-corridor">--.-%</span> nominal // <span id="connection-status"><i class="fas fa-unlink"></i> Disconnected</span></p>
+        </footer>
+    </div>
+
+    <!-- Confirmation Modal for Actions -->
+    <div class="modal" id="confirmation-modal">
+        <div class="modal-content">
+            <h3><i class="fas fa-exclamation-triangle"></i> Confirm Sovereign Action</h3>
+            <p id="modal-message">This action will be logged and requires sovereign authority.</p>
+            <div class="modal-actions">
+                <button class="btn-modal btn-cancel" id="modal-cancel">Cancel</button>
+                <button class="btn-modal btn-confirm" id="modal-confirm">Confirm & Proceed</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="/js/auth.js"></script>
+    <script src="/js/sentinel-gateway.js"></script>
+    <script>
+        // Dashboard initialization logic
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Sentinel Facade initializing...');
+            // Check for valid session token
+            const token = sessionStorage.getItem('qsnt_public_token');
+            if (!token) {
+                // If no token, bounce back to the sovereign warning
+                alert('Invalid or expired sovereign access. Returning to gateway.');
+                window.location.href = '/';
+                return;
+            }
+
+            // Initialize the Sentinel Gateway with the token
+            SentinelGateway.init(token);
+
+            // Try to fetch live status (if gateway configured)
+            SentinelGateway.fetchStatus().then(status => {
+                if (status && status.corridor !== undefined) {
+                    document.getElementById('global-corridor').textContent = `${status.corridor}%`;
+                    document.getElementById('footer-corridor').textContent = `${status.corridor}%`;
+                }
+            }).catch(()=>{/* ignore for simulation */});
+
+            // Panel Navigation
+            const navButtons = document.querySelectorAll('.nav-btn');
+            navButtons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetPanel = this.getAttribute('data-panel');
+                    // Update active nav button
+                    navButtons.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    // Show target panel
+                    document.querySelectorAll('.dashboard-panel').forEach(p => p.classList.remove('active'));
+                    document.getElementById(`panel-${targetPanel}`).classList.add('active');
+                });
+            });
+
+            // Stream toggle
+            let streaming = false;
+            const streamBtn = document.getElementById('btn-stream-toggle');
+            streamBtn.addEventListener('click', function(){
+                if (!streaming) {
+                    SentinelGateway.startLogStream(function(entry){
+                        const container = document.getElementById('log-stream');
+                        const div = document.createElement('div');
+                        div.className = 'log-entry';
+                        div.innerHTML = `<span class="log-time">[${new Date().toLocaleTimeString()}]</span> <span class="log-tag">[STREAM]</span> <span class="log-msg">${entry.message || JSON.stringify(entry)}</span>`;
+                        container.prepend(div);
+                    });
+                    document.getElementById('stream-status').textContent = 'Streaming';
+                    streamBtn.textContent = 'Stop Stream';
+                    streaming = true;
+                } else {
+                    SentinelGateway.stopLogStream();
+                    document.getElementById('stream-status').textContent = 'Stream Ready';
+                    streamBtn.textContent = 'Start Stream';
+                    streaming = false;
+                }
+            });
+
+            // Query execute
+            document.getElementById('btn-query-execute').addEventListener('click', async function(){
+                const q = document.getElementById('query-select').value;
+                try {
+                    const res = await SentinelGateway.submitQuery(q);
+                    document.getElementById('query-output').innerText = JSON.stringify(res, null, 2);
+                } catch (e) {
+                    document.getElementById('query-output').innerText = `Error: ${e.message}`;
+                }
+            });
+
+            // Start a simulated data feed for demonstration
+            simulateDataFeed();
+        });
+
+        // **Simulated Data Feed (Replace with real Gateway calls)**
+        function simulateDataFeed() {
+            // Update corridor status
+            document.getElementById('global-corridor').textContent = '58.5%';
+            document.getElementById('footer-corridor').textContent = '58.5%';
+
+            // Simulate live updates
+            setInterval(() => {
+                // Simulate threat count
+                const threatCount = Math.floor(Math.random() * 5);
+                document.getElementById('threat-count').textContent = `${threatCount} active mitigations`;
+                document.getElementById('threat-count').className = `status-text ${threatCount > 2 ? 'strained' : 'stable'}`;
+            }, 3000);
+        }
+
+        // **Action Initiation**
+        let pendingAction = null;
+        function initiateAction(actionType) {
+            const actions = {
+                'flush': {
+                    title: 'Quantum State Flush',
+                    message: 'You are initiating a controlled collapse of quantum working buffers. This will reset transient states to the last stable checkpoint. Proceed?'
+                },
+                'export': {
+                    title: 'Log Export',
+                    message: 'You are requesting a sanitized export of public logs. The file will be encrypted and downloaded to your local system. Proceed?'
+                }
+            };
+            pendingAction = actionType;
+            document.getElementById('modal-message').textContent = actions[actionType].message;
+            document.getElementById('confirmation-modal').style.display = 'flex';
+        }
+
+        // **Modal Event Handlers**
+        document.getElementById('modal-cancel').addEventListener('click', function() {
+            document.getElementById('confirmation-modal').style.display = 'none';
+            pendingAction = null;
+        });
+        document.getElementById('modal-confirm').addEventListener('click', function() {
+            if (pendingAction) {
+                // In a real implementation, this would call SentinelGateway.executeAction()
+                console.log(`Confirmed action: ${pendingAction}`);
+                alert(`Action "${pendingAction}" confirmed. In a full implementation, this would call the secure gateway.`);
+                document.getElementById('confirmation-modal').style.display = 'none';
+                pendingAction = null;
+            }
+        });
+    </script>
+</body>
+</html>

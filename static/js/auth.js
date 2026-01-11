@@ -39,5 +39,5 @@ const QSNT_Auth = {
     }
 };
 
-// Expose as a global for static pages
+// Expose globally for static usage
 window.QSNT_Auth = QSNT_Auth;

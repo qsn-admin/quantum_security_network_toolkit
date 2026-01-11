@@ -64,7 +64,8 @@ const SentinelGateway = (function() {
             const streamUrl = `${config.gatewayBaseUrl}${config.endpoints.logs}?token=${encodeURIComponent(authToken)}`;
             eventSource = new EventSource(streamUrl);
             eventSource.onmessage = (event) => {
-                const logEntry = JSON.parse(event.data);
+                let logEntry = null;
+                try { logEntry = JSON.parse(event.data); } catch(e){ logEntry = { message: event.data }; }
                 if (onLogEntry && typeof onLogEntry === 'function') {
                     onLogEntry(logEntry);
                 }
@@ -125,5 +126,5 @@ const SentinelGateway = (function() {
     return publicApi;
 })();
 
-// Expose as a global for static pages
+// Expose globally for static usage
 window.SentinelGateway = SentinelGateway;
