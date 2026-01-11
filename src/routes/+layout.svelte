@@ -7,6 +7,7 @@
 	const navItems = [
 		{ path: '/', label: 'CORE' },
 		{ path: '/access', label: 'ACCESS' },
+		{ path: '/plans', label: 'TOOLKIT' },
 		{ path: '/rules', label: 'RULES' },
 		{ path: '/bylaws', label: 'BY-LAWS' },
 		{ path: '/tiers', label: 'TIERS' },

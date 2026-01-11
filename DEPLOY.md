@@ -155,6 +155,7 @@ paths: {
 ```
 /                 - Sovereign Warning
 /access           - Access Protocol
+/plans            - QSNT Toolkit (Tiered Development)
 /rules            - Rules of Access
 /bylaws           - Duel By-Laws
 /tiers            - Architect Peerage
