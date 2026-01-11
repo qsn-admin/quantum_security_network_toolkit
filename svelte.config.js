@@ -11,7 +11,7 @@ const config = {
 			strict: true
 		}),
 		paths: {
-			base: process.argv.includes('dev') ? '' : '/QUANTUM_SECURITY_NETWORK'
+			base: process.argv.includes('dev') ? '' : '/quantum_security_network_toolkit'
 		}
 	}
 };
