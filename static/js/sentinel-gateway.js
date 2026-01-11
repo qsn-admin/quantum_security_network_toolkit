@@ -1,7 +1,8 @@
 // sentinel-gateway.js - Secure communication module with the MCP Gateway
 const SentinelGateway = (function() {
     // Configuration - POINT THIS TO YOUR ACTUAL mcp-gateway-1
-    const config = {
+    // Allow overriding config via window.SENTINEL_CONFIG for deployments
+    const config = Object.assign({
         gatewayBaseUrl: 'https://your-mcp-gateway-1:3002/public-api/v1',
         endpoints: {
             status: '/status',
@@ -10,7 +11,7 @@ const SentinelGateway = (function() {
             logs: '/stream'
         },
         heartbeatInterval: 30000 // ms
-    };
+    }, (window && window.SENTINEL_CONFIG) ? window.SENTINEL_CONFIG : {});
 
     let authToken = null;
     let eventSource = null;
@@ -107,7 +108,7 @@ const SentinelGateway = (function() {
         },
 
         // Private method for making authenticated requests
-        _makeRequest: async function(method, endpoint, data = null) {
+        _makeRequest: async function(method, endpoint, data = null, timeout = 8000) {
             const url = config.gatewayBaseUrl + endpoint;
             const headers = {
                 'Content-Type': 'application/json',
@@ -115,11 +116,25 @@ const SentinelGateway = (function() {
             };
             const options = { method, headers };
             if (data) options.body = JSON.stringify(data);
-            const response = await fetch(url, options);
-            if (!response.ok) {
-                throw new Error(`Gateway error: ${response.status} ${response.statusText}`);
+
+            const controller = new AbortController();
+            const id = setTimeout(() => controller.abort(), timeout);
+            try {
+                const resp = await fetch(url, { ...options, signal: controller.signal });
+                clearTimeout(id);
+                if (!resp.ok) {
+                    throw new Error(`Gateway error: ${resp.status} ${resp.statusText}`);
+                }
+                const text = await resp.text();
+                try {
+                    return JSON.parse(text);
+                } catch (e) {
+                    return { ok: true, data: text };
+                }
+            } catch (err) {
+                clearTimeout(id);
+                throw err;
             }
-            return await response.json();
         }
     };
 
