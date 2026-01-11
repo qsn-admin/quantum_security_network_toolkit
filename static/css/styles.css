@@ -1,4 +1,26 @@
 /* styles.css - Base styles for Oroboros QSN */
+:root {
+  /* Void Palette */
+  --void-deep: #0a0a0a;
+  --void-surface: #111111;
+  --void-edge: #1a1a1a;
+  --void-text: #e0e0e0;
+  --void-muted: #666666;
+
+  /* Quantum Accents */
+  --quantum-cyan: #00f3ff;
+  --quantum-pink: #ff0066;
+  --quantum-green: #00ff88;
+  --quantum-gold: #ffd700;
+  --quantum-purple: #8b5cf6;
+
+  /* State Colors */
+  --state-active: #00f3ff;
+  --state-warning: #ff9500;
+  --state-critical: #ff0066;
+  --state-dormant: #444444;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -11,34 +33,57 @@ html, body {
 }
 
 body {
-  font-family: 'Courier New', monospace;
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 50%, #16213e 100%);
-  color: #00ff88;
-  line-height: 1.6;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  background: var(--void-deep);
+  color: var(--void-text);
+  line-height: 1.618;
   overflow-x: hidden;
 }
 
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(0, 243, 255, 0.03) 0%, transparent 50%),
+    linear-gradient(rgba(0, 243, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 243, 255, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 50px 50px, 50px 50px;
+  pointer-events: none;
+  z-index: -1;
+}
+
 a {
-  color: #00ff88;
+  color: var(--quantum-cyan);
   text-decoration: none;
-  transition: color 0.3s;
+  transition: all 0.2s ease;
 }
 
 a:hover {
-  color: #00dd77;
-  text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+  text-shadow: 0 0 10px var(--quantum-cyan);
 }
 
 button, input, select, textarea {
-  font-family: 'Courier New', monospace;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
   color: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--quantum-cyan);
 }
 
 .qsnt-container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: rgba(10, 10, 10, 0.95);
+  background: var(--void-deep);
+  position: relative;
 }
 
 /* Utility Classes */
