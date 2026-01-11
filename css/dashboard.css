@@ -149,7 +149,7 @@
     text-align: center;
     margin: 0.5rem 0;
 }
-.status-text.stable { color: #00ff88; }
+.status-text.stable { color: var(--quantum-cyan); }
 .status-text.strained { color: #ffaa00; }
 .status-text.collapsing { color: #ff4444; animation: blink 1s infinite; }
 @keyframes blink { 50% { opacity: 0.5; } }
@@ -304,7 +304,7 @@
     color: #6aabd2;
     font-size: 0.9rem;
 }
-#connection-status.connected { color: #00ff88; }
+#connection-status.connected { color: var(--quantum-cyan); }
 #connection-status.disconnected { color: #ff5555; }
 
 /* Modal */

@@ -213,7 +213,10 @@
                     this.classList.add('active');
                     // Show target panel
                     document.querySelectorAll('.dashboard-panel').forEach(p => p.classList.remove('active'));
-                    document.getElementById(`panel-${targetPanel}`).classList.add('active');
+                    const targetPanelElement = document.getElementById(`panel-${targetPanel}`);
+                    if (targetPanelElement) {
+                        targetPanelElement.classList.add('active');
+                    }
                 });
             });
 
