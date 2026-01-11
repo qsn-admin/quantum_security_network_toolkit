@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="dashboard-body">
+    <script>
+        // Point static dashboard to local mock gateway for testing (port 3003)
+        window.SENTINEL_CONFIG = { gatewayBaseUrl: 'http://localhost:3003/public-api/v1' };
+    </script>
     <div class="qsnt-container">
         <!-- Dashboard Header -->
         <header class="sentinel-header">
