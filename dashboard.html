@@ -13,32 +13,51 @@
         // Point to local mock gateway for testing (port 3003 to avoid conflicts)
         window.SENTINEL_CONFIG = { gatewayBaseUrl: 'http://localhost:3003/public-api/v1' };
     </script>
-    <div class="qsnt-container">
-        <!-- Dashboard Header -->
-        <header class="sentinel-header">
-            <div class="header-grid">
-                <h1><i class="fas fa-infinity"></i> OROBOROS QSN <span class="subtitle">// Sentinel Facade</span></h1>
+    <div class="core-page">
+        <section class="sentinel-header">
+            <div class="warning-border">
+                <h1>OROBOROS QSN</h1>
+                <p class="warning-subtitle">// SENTINEL FACADE</p>
+            </div>
+            <div class="status-bar">
                 <div class="corridor-status">
-                    <div class="status-label">Sovereign Corridor</div>
-                    <div class="status-value" id="global-corridor">--.-%</div>
+                    <span class="status-label">SOVEREIGN CORRIDOR</span>
+                    <span class="status-value" id="global-corridor">--.-%</span>
                 </div>
                 <div class="live-pulse">
                     <span class="pulse-dot active"></span>
                     <span class="pulse-text">LIVE FEED</span>
                 </div>
             </div>
-            <nav class="facade-nav">
-                <a href="#" class="nav-btn active" data-panel="atrium"><i class="fas fa-satellite-dish"></i> Status Atrium</a>
-                <a href="#" class="nav-btn" data-panel="console"><i class="fas fa-terminal"></i> Control Console</a>
-                <a href="#" class="nav-btn" data-panel="lens"><i class="fas fa-search"></i> Query Lens</a>
-                <a href="#" class="nav-btn" data-panel="stream"><i class="fas fa-stream"></i> Public Log Stream</a>
+        </section>
+
+        <section class="facade-nav">
+            <nav class="nav-grid">
+                <button class="nav-btn active" data-panel="atrium">
+                    <i class="fas fa-satellite-dish"></i>
+                    <span>Status Atrium</span>
+                </button>
+                <button class="nav-btn" data-panel="console">
+                    <i class="fas fa-terminal"></i>
+                    <span>Control Console</span>
+                </button>
+                <button class="nav-btn" data-panel="lens">
+                    <i class="fas fa-search"></i>
+                    <span>Query Lens</span>
+                </button>
+                <button class="nav-btn" data-panel="stream">
+                    <i class="fas fa-stream"></i>
+                    <span>Public Log Stream</span>
+                </button>
             </nav>
-        </header>
+        </section>
 
         <main class="facade-main">
             <!-- PANEL 1: The Status Atrium -->
             <section class="dashboard-panel active" id="panel-atrium">
-                <h2><i class="fas fa-satellite-dish"></i> Quantum Core Vitality</h2>
+                <div class="panel-header">
+                    <h2><i class="fas fa-satellite-dish"></i> Quantum Core Vitality</h2>
+                </div>
                 <div class="vitality-grid">
                     <div class="vitality-card">
                         <div class="vitality-ring" data-value="78">
@@ -67,19 +86,29 @@
 
             <!-- PANEL 2: The Control Console -->
             <section class="dashboard-panel" id="panel-console">
-                <h2><i class="fas fa-terminal"></i> Sovereign Control Console</h2>
-                <p class="panel-warning"><i class="fas fa-exclamation-triangle"></i> Actions are logged, audited, and require confirmation.</p>
+                <div class="panel-header">
+                    <h2><i class="fas fa-terminal"></i> Sovereign Control Console</h2>
+                </div>
+                <div class="panel-warning">
+                    <p><i class="fas fa-exclamation-triangle"></i> Actions are logged, audited, and require confirmation.</p>
+                </div>
                 <div class="control-grid">
                     <div class="control-card">
                         <h3><i class="fas fa-sync-alt"></i> Quantum State Flush</h3>
                         <p>Request a controlled collapse & re-initialization of working quantum buffers from the last stable checkpoint.</p>
-                        <button class="btn-control" id="btn-flush" onclick="initiateAction('flush')"><i class="fas fa-play"></i> Initiate Flush Sequence</button>
+                        <button class="btn-control" id="btn-flush" onclick="initiateAction('flush')">
+                            <span class="btn-text">Initiate Flush Sequence</span>
+                            <i class="fas fa-play"></i>
+                        </button>
                         <div class="action-status" id="status-flush"></div>
                     </div>
                     <div class="control-card">
                         <h3><i class="fas fa-download"></i> Public Log Export</h3>
                         <p>Generate and download an encrypted, sanitized archive (.qslog) of public-facing system events.</p>
-                        <button class="btn-control" id="btn-export" onclick="initiateAction('export')"><i class="fas fa-file-archive"></i> Compress & Export Logs</button>
+                        <button class="btn-control" id="btn-export" onclick="initiateAction('export')">
+                            <span class="btn-text">Compress & Export Logs</span>
+                            <i class="fas fa-file-archive"></i>
+                        </button>
                         <div class="action-status" id="status-export"></div>
                     </div>
                 </div>
@@ -87,7 +116,9 @@
 
             <!-- PANEL 3: The Query Lens -->
             <section class="dashboard-panel" id="panel-lens">
-                <h2><i class="fas fa-search"></i> Query Lens</h2>
+                <div class="panel-header">
+                    <h2><i class="fas fa-search"></i> Query Lens</h2>
+                </div>
                 <p>Constrained interface for whitelisted system queries. Input is tokenized and validated.</p>
                 <div class="lens-container">
                     <div class="query-box">
@@ -98,7 +129,10 @@
                                 <option value="coherence_history">Coherence History (7d)</option>
                                 <option value="public_audit">Public Action Audit Log</option>
                             </select>
-                            <button class="btn-query" id="btn-query-execute"><i class="fas fa-play"></i> Execute</button>
+                            <button class="btn-query" id="btn-query-execute">
+                                <span class="btn-text">Execute</span>
+                                <i class="fas fa-play"></i>
+                            </button>
                         </div>
                         <div class="query-output" id="query-output">
                             <pre>// Query results will appear here.</pre>
@@ -109,10 +143,15 @@
 
             <!-- PANEL 4: The Public Log Stream -->
             <section class="dashboard-panel" id="panel-stream">
-                <h2><i class="fas fa-stream"></i> Public Log Stream</h2>
+                <div class="panel-header">
+                    <h2><i class="fas fa-stream"></i> Public Log Stream</h2>
+                </div>
                 <p>Live, sanitized feed of system events. Sensitive data is replaced with ontological tokens.</p>
                 <div class="stream-controls">
-                    <button class="btn-stream" id="btn-stream-toggle"><i class="fas fa-play"></i> Start Stream</button>
+                    <button class="btn-stream" id="btn-stream-toggle">
+                        <span class="btn-text">Start Stream</span>
+                        <i class="fas fa-play"></i>
+                    </button>
                     <span class="stream-info" id="stream-status">Stream Ready</span>
                 </div>
                 <div class="log-stream-container">
