@@ -70,9 +70,9 @@
 	];
 
 	const aiTeam = [
-		{ name: 'GLM-4.7', role: 'Core encryption engine', secondary: 'Physics algorithms', focus: 'Noir Shield' },
-		{ name: 'DeepSeek', role: 'AI assistant logic', secondary: 'Chat intelligence', focus: 'Noir Signal + AI' },
-		{ name: 'GLM-4.6', role: 'Testing framework', secondary: 'UI/UX development', focus: 'Dashboard + QA' }
+		{ name: 'NOIR-SHIELD', role: 'Core encryption engine', secondary: 'Physics algorithms', focus: 'Quantum Encryption' },
+		{ name: 'NOIR-SIGNAL', role: 'AI assistant logic', secondary: 'Chat intelligence', focus: 'Secure Comms + AI' },
+		{ name: 'NOIR-SYNTH', role: 'Testing framework', secondary: 'UI/UX development', focus: 'Dashboard + QA' }
 	];
 
 	const schedule = [
@@ -248,12 +248,12 @@
 		<h2>CONTINGENCY PROTOCOLS</h2>
 		<div class="contingency-grid">
 			<div class="contingency-card">
-				<h4>IF GLM-4.7 LAGS</h4>
-				<p>DeepSeek implements basic encryption. GLM-4.6 provides fallback algorithms. Core functionality maintained.</p>
+				<h4>IF NOIR-SHIELD LAGS</h4>
+				<p>Noir-Signal implements basic encryption. Noir-Synth provides fallback algorithms. Core functionality maintained.</p>
 			</div>
 			<div class="contingency-card">
-				<h4>IF DEEPSEEK LAGS</h4>
-				<p>GLM-4.7 implements rule-based assistant. GLM-4.6 provides UI intelligence. 46%/1% parameters still enforced.</p>
+				<h4>IF NOIR-SIGNAL LAGS</h4>
+				<p>Noir-Shield implements rule-based assistant. Noir-Synth provides UI intelligence. 46%/1% parameters still enforced.</p>
 			</div>
 			<div class="contingency-card">
 				<h4>IF ANY AI FAILS</h4>
