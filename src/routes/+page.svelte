@@ -1,6 +1,14 @@
 <script>
 	import { base } from '$app/paths';
 	import MetatronsCube from '$lib/components/geometric/MetatronsCube.svelte';
+
+	// Proceed handler: grants a mock public token and navigates to the static dashboard
+	function proceedToSentinelFacade() {
+		const mockPublicToken = btoa('public_access:' + Date.now());
+		sessionStorage.setItem('qsnt_public_token', mockPublicToken);
+		// Navigate to the static dashboard page
+		window.location.href = '/dashboard.html';
+	}
 </script>
 
 <div class="core-page">
@@ -58,10 +66,10 @@
 	</section>
 
 	<section class="action-section">
-		<a href="{base}/access" class="proceed-btn">
+		<button id="proceed-btn" class="proceed-btn" on:click={proceedToSentinelFacade}>
 			<span class="btn-text">PROCEED TO LEVEL 50 GATEWAY</span>
 			<span class="btn-icon">&#x2192;</span>
-		</a>
+		</button>
 	</section>
 </div>
 
